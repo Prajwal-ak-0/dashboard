@@ -1,7 +1,7 @@
 import Menu from "@/components/Menu";
 import Navbar from "@/components/Navbar";
-import SideBar from "@/components/SideBar";
-import SideBarMenu from "@/components/SideBarMenu";
+import SideBar from "@/components/sidebar/SideBar";
+import SideBarMenu from "@/components/sidebar/SideBarMenu";
 import { Separator } from "@/components/ui/separator";
 
 const MainLayout = async ({

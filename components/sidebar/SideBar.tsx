@@ -3,8 +3,8 @@
 import Image from "next/image";
 import React, { useCallback } from "react";
 import SideItem from "./SideItem";
-import { Separator } from "./ui/separator";
-import { ScrollArea } from "./ui/scroll-area";
+import { Separator } from "../ui/separator";
+import { ScrollArea } from "../ui/scroll-area";
 import {
   Bot,
   CalendarDays,
@@ -15,7 +15,6 @@ import {
   Mail,
   MessageSquare,
 } from "lucide-react";
-import SideBarIcon from "./SideBarIcon";
 import useSideBar from "@/hooks/useSideBar";
 import useSideMenu from "@/hooks/useSideMenu";
 

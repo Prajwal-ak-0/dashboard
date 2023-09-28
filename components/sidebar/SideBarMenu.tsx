@@ -3,10 +3,9 @@
 import Image from 'next/image'
 import React, { useCallback } from 'react'
 import SideBarItem from './SideBarItem'
-import { Separator } from './ui/separator'
-import { ScrollArea } from './ui/scroll-area'
+import { Separator } from '../ui/separator'
+import { ScrollArea } from '../ui/scroll-area'
 import { Bot, CalendarDays, ChevronRight, File, LayoutGrid, ListTodo, Mail, MessageSquare } from 'lucide-react'
-import SideBarIcon from './SideBarIcon'
 import useSideMenu from '@/hooks/useSideMenu'
 import useSideBar from '@/hooks/useSideBar';
 

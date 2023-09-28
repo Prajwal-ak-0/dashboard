@@ -1,7 +1,10 @@
+"use client";
+
 import { LucideProps } from "lucide-react";
-import { ActionTooltip } from "./ActionToolTip";
+import { ActionTooltip } from "../ActionToolTip";
 import { cn } from "@/lib/utils";
 import React from "react";
+import { useRouter } from "next/navigation";
 
 interface SideBarItemProps {
   name: string;
@@ -11,10 +14,12 @@ interface SideBarItemProps {
 }
 
 const SideBarItem = ({ name, icon, id, url }: SideBarItemProps) => {
+  const router=useRouter();
+
   return (
     <ActionTooltip side="right" align="center" label={name}>
       <div className="flex flex-row hover:scale-110 hover:shadow-md transition-transform dark:hover:bg-indigo-950">
-  <button className="group relative flex items-center">
+  <button className="group relative flex items-center" onClick={() => {router.push(url)}}>
     <div
       className={cn(
         "absolute left-0 bg-primary rounded-r-full transition-all w-[4px]"

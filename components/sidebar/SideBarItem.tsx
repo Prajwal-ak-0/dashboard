@@ -1,6 +1,6 @@
 
 import { LucideProps } from "lucide-react";
-import { ActionTooltip } from "./ActionToolTip";
+import { ActionTooltip } from "../ActionToolTip";
 import { cn } from "@/lib/utils";
 import React from "react";
 
