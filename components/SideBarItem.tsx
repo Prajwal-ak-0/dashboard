@@ -1,7 +1,6 @@
 
 import { LucideProps } from "lucide-react";
 import { ActionTooltip } from "./ActionToolTip";
-import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import React from "react";
 
@@ -31,7 +30,7 @@ const SideBarItem = ({
           "absolute left-0 bg-primary rounded-r-full transition-all w-[4px]"
         )} />
         <div className={cn(
-          "relative group flex mx-3 h-[48px] w-[48px] rounded-[24px] group-hover:rounded-[16px] transition-all overflow-hidden"
+          "relative group flex mx-1 h-[48px] w-[48px] rounded-[24px] group-hover:rounded-[16px] transition-all overflow-hidden"
         )}>
           {React.createElement(icon, {
             size: 24,

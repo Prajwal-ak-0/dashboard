@@ -4,6 +4,7 @@ import SideBarItem from './SideBarItem'
 import { Separator } from './ui/separator'
 import { ScrollArea } from './ui/scroll-area'
 import { Bot, CalendarDays, File, LayoutGrid, ListTodo, Mail, MessageSquare } from 'lucide-react'
+import SideBarIcon from './SideBarIcon'
 
 export const items = [
   {
@@ -54,12 +55,12 @@ const SideBarMenu = () => {
   return (
     <div>
         <Image
-          className="w-12 h-12 mt-6 rounded-full transition-transform transform hover:scale-105 hover:shadow-lg cursor-pointer"
-          src="/logo.png"
-          width={40}
-          height={40}
-          alt="Logo"
-        />
+        src='/logo.png'
+        alt='Logo'
+        width={24}
+        height={24}
+        className="w-12 ml-1 h-12 mt-6 rounded-full transition-transform transform hover:scale-125 hover:shadow-lg cursor-pointer"
+      />
         
         <div className='space-y-4 flex flex-col items-center h-full text-primary w-full dark:bg-slate-900 bg-white py-3'>
         <Separator
