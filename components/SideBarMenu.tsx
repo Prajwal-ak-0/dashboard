@@ -27,7 +27,7 @@ export const items = [
   },
   {
     id: '4',
-    name: 'Tofo',
+    name: 'Todo',
     url: '/todo',
     icon:ListTodo
   },

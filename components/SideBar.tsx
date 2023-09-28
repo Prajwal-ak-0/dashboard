@@ -35,7 +35,7 @@ export const items = [
   },
   {
     id: "4",
-    name: "Tofo",
+    name: "Todo",
     url: "/todo",
     icon: ListTodo,
   },
@@ -70,6 +70,11 @@ const SideBarMenu = () => {
           height={24}
           className="w-12 ml-1 h-12 rounded-full transition-transform transform hover:scale-125 hover:shadow-lg cursor-pointer"
         />
+        <h1 className="text-2xl ml-2 mt-2 font-bold text-center text-gray-800 dark:text-white mb-4 hover:text-blue-500 transition-colors transform hover:scale-105 hover:shadow-lg hover:glow">
+  KIBITZIN
+</h1>
+
+
       </div>
 
       <Separator className="h-[2px] bg-zinc-300 dark:bg-zinc-700 rounded-md w-full relative mx-2 mt-2" />
