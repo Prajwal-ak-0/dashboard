@@ -6,6 +6,7 @@ import { ScrollArea } from "./ui/scroll-area";
 import {
   Bot,
   CalendarDays,
+  ChevronLeft,
   File,
   LayoutGrid,
   ListTodo,
@@ -61,24 +62,25 @@ export const items = [
 
 const SideBarMenu = () => {
   return (
+    <>
     <div>
-      <div className="flex mt-6 ">
+      <div className="flex mt-6 hover:scale-110">
         <Image
           src="/logo.png"
           alt="Logo"
           width={24}
           height={24}
-          className="w-12 ml-1 h-12 rounded-full transition-transform transform hover:scale-125 hover:shadow-lg cursor-pointer"
+          className="w-12 ml-1 h-12 rounded-full transition-transform transform  hover:shadow-lg cursor-pointer"
         />
-        <h1 className="text-2xl ml-2 mt-2 font-bold text-center text-gray-800 dark:text-white mb-4 hover:text-blue-500 transition-colors transform hover:scale-105 hover:shadow-lg hover:glow">
-  KIBITZIN
-</h1>
-
-
+        <h1 className="text-2xl ml-2 mt-2 font-bold text-center text-gray-800 dark:text-white mb-4 cursor-pointer transition-colors transform hover:glow">
+          KIBITZIN
+        </h1>
       </div>
 
-      <Separator className="h-[2px] bg-zinc-300 dark:bg-zinc-700 rounded-md w-full relative mx-2 mt-2" />
-
+      <div className="flex flex-row">
+        <Separator className="h-[2px] bg-zinc-300 dark:bg-zinc-700 rounded-md w-[144px] relative ml-1  mt-2 " />
+        <ChevronLeft size={20} className='dark:text-slate-900 font-semibold bg-slate-200 ml-auto hover:scale-125 rounded-full cursor-pointer'/>
+      </div>
       <div className="space-y-4 flex flex-col items-center h-full text-primary w-full dark:bg-slate-900 bg-white py-3">
         <ScrollArea className="flex-1 w-full">
           {items.map((item) => (
@@ -91,9 +93,10 @@ const SideBarMenu = () => {
               />
             </div>
           ))}
-        </ScrollArea>
+        </ScrollArea >
       </div>
     </div>
+    </>
   );
 };
 

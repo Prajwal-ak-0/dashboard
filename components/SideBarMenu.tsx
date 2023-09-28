@@ -3,7 +3,7 @@ import React from 'react'
 import SideBarItem from './SideBarItem'
 import { Separator } from './ui/separator'
 import { ScrollArea } from './ui/scroll-area'
-import { Bot, CalendarDays, File, LayoutGrid, ListTodo, Mail, MessageSquare } from 'lucide-react'
+import { Bot, CalendarDays, ChevronRight, File, LayoutGrid, ListTodo, Mail, MessageSquare } from 'lucide-react'
 import SideBarIcon from './SideBarIcon'
 
 export const items = [
@@ -59,13 +59,16 @@ const SideBarMenu = () => {
         alt='Logo'
         width={24}
         height={24}
-        className="w-12 ml-1 h-12 mt-6 rounded-full transition-transform transform hover:scale-125 hover:shadow-lg cursor-pointer"
+        className="w-12 ml-1 h-12 mt-6 rounded-full transition-transform transform hover:scale-110 hover:shadow-lg cursor-pointer"
       />
+        <div className='w-full flex'>
+          <Separator
+          className="mr-1 h-[2px] bg-zinc-300 dark:bg-zinc-700 rounded-md w-7 ml-2 mt-2"
+          /> 
+          <ChevronRight size={20} className='dark:text-slate-900 bg-slate-200 hover:scale-125 rounded-full cursor-pointer'/>
+        </div>
+        <div className='space-y-3 flex flex-col items-center h-full text-primary w-full dark:bg-slate-900 bg-white py-2'>
         
-        <div className='space-y-4 flex flex-col items-center h-full text-primary w-full dark:bg-slate-900 bg-white py-3'>
-        <Separator
-        className="h-[2px] bg-zinc-300 dark:bg-zinc-700 rounded-md w-10 mx-auto"
-        /> 
         <ScrollArea className="flex-1 w-full">
         {items.map((item) => (
           <div key={item.name} className="mb-4">
