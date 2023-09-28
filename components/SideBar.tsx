@@ -1,5 +1,7 @@
+"use client"
+
 import Image from "next/image";
-import React from "react";
+import React, { useCallback } from "react";
 import SideItem from "./SideItem";
 import { Separator } from "./ui/separator";
 import { ScrollArea } from "./ui/scroll-area";
@@ -14,6 +16,8 @@ import {
   MessageSquare,
 } from "lucide-react";
 import SideBarIcon from "./SideBarIcon";
+import useSideBar from "@/hooks/useSideBar";
+import useSideMenu from "@/hooks/useSideMenu";
 
 export const items = [
   {
@@ -61,6 +65,19 @@ export const items = [
 ];
 
 const SideBarMenu = () => {
+  const sidebar=useSideBar();
+  const sidemenu=useSideMenu();
+
+  const toggle = useCallback(() => {
+    if (sidebar.isOpen) {
+      sidebar.onClose(); // Close the sidebar
+      sidemenu.onOpen(); // Open the sidemenu
+    } else {
+      sidebar.onOpen(); // Open the sidebar
+      sidemenu.onClose(); // Close the sidemenu
+    }
+  }, [sidebar, sidemenu]);
+
   return (
     <>
     <div>
@@ -79,7 +96,7 @@ const SideBarMenu = () => {
 
       <div className="flex flex-row">
         <Separator className="h-[2px] bg-zinc-300 dark:bg-zinc-700 rounded-md w-[144px] relative ml-1  mt-2 " />
-        <ChevronLeft size={20} className='dark:text-slate-900 font-semibold bg-slate-200 ml-auto hover:scale-125 rounded-full cursor-pointer'/>
+        <ChevronLeft size={20} onClick={toggle} className='dark:text-slate-900 font-semibold bg-slate-200 ml-auto hover:scale-125 rounded-full cursor-pointer'/>
       </div>
       <div className="space-y-4 flex flex-col items-center h-full text-primary w-full dark:bg-slate-900 bg-white py-3">
         <ScrollArea className="flex-1 w-full">

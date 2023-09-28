@@ -77,3 +77,11 @@
     @apply bg-background text-foreground;
   }
 }
+
+.sidebar-transition {
+  transition: width 0.3s ease-in-out;
+}
+
+.sidemenu-transition {
+  transition: width 0.3s ease-in-out;
+}

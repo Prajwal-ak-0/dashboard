@@ -1,10 +1,14 @@
+"use client";
+
 import Image from 'next/image'
-import React from 'react'
+import React, { useCallback } from 'react'
 import SideBarItem from './SideBarItem'
 import { Separator } from './ui/separator'
 import { ScrollArea } from './ui/scroll-area'
 import { Bot, CalendarDays, ChevronRight, File, LayoutGrid, ListTodo, Mail, MessageSquare } from 'lucide-react'
 import SideBarIcon from './SideBarIcon'
+import useSideMenu from '@/hooks/useSideMenu'
+import useSideBar from '@/hooks/useSideBar';
 
 export const items = [
   {
@@ -52,6 +56,19 @@ export const items = [
 ]
 
 const SideBarMenu = () => {
+  const sidemenu=useSideMenu();
+  const sidebar=useSideBar();
+
+  const toggle = useCallback(() => {
+    if (sidebar.isOpen) {
+      sidebar.onClose(); // Close the sidebar
+      sidemenu.onOpen(); // Open the sidemenu
+    } else {
+      sidebar.onOpen(); // Open the sidebar
+      sidemenu.onClose(); // Close the sidemenu
+    }
+  }, [sidebar, sidemenu]);
+
   return (
     <div>
         <Image
@@ -65,7 +82,7 @@ const SideBarMenu = () => {
           <Separator
           className="mr-1 h-[2px] bg-zinc-300 dark:bg-zinc-700 rounded-md w-7 ml-2 mt-2"
           /> 
-          <ChevronRight size={20} className='dark:text-slate-900 bg-slate-200 hover:scale-125 rounded-full cursor-pointer'/>
+          <ChevronRight onClick={toggle} size={20} className='dark:text-slate-900 bg-slate-200 hover:scale-125 rounded-full cursor-pointer'/>
         </div>
         <div className='space-y-3 flex flex-col items-center h-full text-primary w-full dark:bg-slate-900 bg-white py-2'>
         
