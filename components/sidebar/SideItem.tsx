@@ -18,8 +18,8 @@ const SideBarItem = ({ name, icon, id, url }: SideBarItemProps) => {
 
   return (
     <ActionTooltip side="right" align="center" label={name}>
-      <div className="flex flex-row hover:scale-110 hover:shadow-md transition-transform dark:hover:bg-indigo-950">
-  <button className="group relative flex items-center" onClick={() => {router.push(url)}}>
+      <div onClick={() => {router.push(url)}} className="flex flex-row hover:scale-110 hover:shadow-md transition-transform cursor-pointer dark:hover:bg-indigo-950">
+  <button className="group relative flex items-center">
     <div
       className={cn(
         "absolute left-0 bg-primary rounded-r-full transition-all w-[4px]"

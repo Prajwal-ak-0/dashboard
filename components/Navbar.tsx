@@ -5,6 +5,7 @@ import { ModeToggle } from "./ModeToggle";
 import { CopyPlus, Heart, Search } from "lucide-react";
 
 import Image from "next/image";
+import { UserButton } from "@clerk/nextjs";
 
 const Navbar = () => {
   return (
@@ -48,8 +49,12 @@ const Navbar = () => {
           <CopyPlus className="text-gray-600 hover:text-green-500" size={25} />
         </div>
 
-        <div className="pl-2 pr-4 pt-2">
+        <div className="pl-2 pr-2 pt-2">
           <ModeToggle />
+        </div>
+
+        <div className="pl-2 pr-4 pt-2">
+          <UserButton afterSignOutUrl="/" />
         </div>
       </div>
     </div>

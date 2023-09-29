@@ -15,6 +15,14 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require("tailwindcss-animatecss")({
+      classes: [
+        "animate__animated",
+        "animate__fadeIn",
+        "animate__bounce", // Use the desired animate.css class here
+      ],
+    }),
+  ],
 }
 export default config

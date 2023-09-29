@@ -3,6 +3,7 @@ import { LucideProps } from "lucide-react";
 import { ActionTooltip } from "../ActionToolTip";
 import { cn } from "@/lib/utils";
 import React from "react";
+import { useRouter } from "next/navigation";
 
 interface SideBarItemProps {
     name: string;
@@ -17,6 +18,7 @@ const SideBarItem = ({
     id,
     url
 }:SideBarItemProps) => {
+  const router = useRouter()
   return (
     <ActionTooltip
       side="right"
@@ -24,6 +26,7 @@ const SideBarItem = ({
       label={name}
     >
       <button
+        onClick={() => {router.push(url)}}
         className="group relative flex items-center"
       >
         <div className={cn(

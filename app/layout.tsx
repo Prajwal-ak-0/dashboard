@@ -3,6 +3,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Open_Sans } from 'next/font/google'
 import { cn } from '@/lib/utils'
+import { ClerkProvider } from '@clerk/nextjs'
 
 const font = Open_Sans({ subsets: ['latin'] })
 
@@ -17,6 +18,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
+    <ClerkProvider>
     <html lang="en" suppressHydrationWarning>
       <body 
         className={cn(
@@ -34,5 +36,6 @@ export default function RootLayout({
         </ThemeProvider>
       </body>
     </html>
+    </ClerkProvider>
   )
 }
