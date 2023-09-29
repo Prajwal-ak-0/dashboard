@@ -4,7 +4,7 @@ import BottomItem from './BottomItem'
 
 const BottomMenu = () => {
   return (
-    <div className='w-full bottom-0 left-0 z-30 max-sm:block sm:hidden fixed h-[10%]  shadow-sm bg-white rounded-md'>
+    <div className='w-full bottom-0 left-0 z-30 max-sm:block sm:hidden fixed h-[10%] border-2  shadow-sm bg-white rounded-md'>
         <div className="flex flex-row items-center justify-between overflow-x-auto mx-2">
             {
                 items.map((item)=>(

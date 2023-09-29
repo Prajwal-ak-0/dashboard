@@ -16,7 +16,7 @@ const MenuItem:React.FC<MenuItemProps>=({
     icon
 })=>{
     return(
-        <div className="flex hover:scale-105 hover:bg-pink-100">
+        <div className="flex hover:bg-pink-100">
             <div className="px-3 py-2">
                 {React.createElement(icon, {
                     size: 24,

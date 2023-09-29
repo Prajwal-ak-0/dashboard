@@ -9,9 +9,13 @@ const MainLayout = async ({
 }) => {
   const user=await intialProfile();
     return ( 
-      <Menu>
-        <Navbar user={user} />
-      </Menu>
+      <>
+      <Menu/>
+      <Navbar user={user} />
+      <main className="md:pl-[172px] h-full">
+        {children}
+      </main>
+      </>
      );
     }
 export default MainLayout;

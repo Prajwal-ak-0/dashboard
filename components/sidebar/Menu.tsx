@@ -7,8 +7,9 @@ import useSideBar from '@/hooks/useSideBar'
 import useSideMenu from '@/hooks/useSideMenu'
 import { cn } from '@/lib/utils';
 import BottomMenu from '../bottombar/BottomMenu';
+import Logo from '../navbar/Logo';
 
-const Menu = ({children}:{children:ReactNode}) => {
+const Menu = () => {
     const sidebar=useSideBar();
     const sidemenu=useSideMenu();
 
@@ -16,12 +17,9 @@ const Menu = ({children}:{children:ReactNode}) => {
     return (
         <div>
             <div className="h-full">
-            <div className="md:flex z-30 max-md:hidden h-full w-[170px] flex-col fixed inset-y-0">
+            <div className="md:flex z-30 max-sm:hidden h-full w-fit flex-col fixed inset-y-0">
               <SideBar/>
             </div>
-            <main className="md:pl-[172px] h-full">
-              {children}
-            </main>
             <div>
               <BottomMenu/>
             </div>
@@ -32,12 +30,9 @@ const Menu = ({children}:{children:ReactNode}) => {
   return (
     <div>
         <div className="h-full">
-        <div className=" md:flex z-30 max-md:hidden h-full w-[170px] flex-col fixed inset-y-0 ">
+        <div className=" md:flex z-30 max-sm:hidden h-full w-fit flex-col fixed inset-y-0 ">
           <SideBarMenu/>
         </div>
-        <main className="md:pl-[172px] h-full">
-          {children}
-        </main>
         <div>
           <BottomMenu/>
         </div>

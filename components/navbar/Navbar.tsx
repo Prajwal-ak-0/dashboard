@@ -8,27 +8,24 @@ import Image from "next/image";
 import { UserButton, currentUser } from "@clerk/nextjs";
 import { SafeUser } from "@/types";
 import UserMenu from "./UserMenu";
+import Logo from "./Logo";
 
 interface NavbarProps {
-  user:SafeUser | null;
+  user: SafeUser | null;
 }
 
-const Navbar = ({
-  user
-}:NavbarProps )=> {
-  
+const Navbar = ({ user }: NavbarProps) => {
   return (
     <>
-    <div className="md:my-6 my-4  md:mx-6 mx-2 flex flex-row">
-      <div className="flex items-center space-x-2">
-        
-        {/* <h1 className="text-2xl font-bold tracking-wide transition-colors dark:text-white dark:bg-slate-900 text-gray-800 bg-white hover:text-blue-800 cursor-pointer bg-opacity-60 hover:bg-opacity-100 rounded-lg p-2 hover:shadow-md font-sans hover:scale-105">
+      <div className="md:my-6 sm:my-4  md:mx-6 sm:mx-2 sm:flex sm:flex-row">
+        <div className="flex items-center space-x-2">
+          {/* <h1 className="text-2xl font-bold tracking-wide transition-colors dark:text-white dark:bg-slate-900 text-gray-800 bg-white hover:text-blue-800 cursor-pointer bg-opacity-60 hover:bg-opacity-100 rounded-lg p-2 hover:shadow-md font-sans hover:scale-105">
           Dashboard
         </h1> */}
-      </div>
+        </div>
 
-      {/* Center search bar */}
-      {/* <div className=" md:w-[500px]  md:block hidden md:ml-[550px] md:mr-4 ">
+        {/* Center search bar */}
+        {/* <div className=" md:w-[500px]  md:block hidden md:ml-[550px] md:mr-4 ">
         <div className="relative">
           <input
             type="text"
@@ -46,33 +43,44 @@ const Navbar = ({
         </div>
       </div> */}
 
-      <div className="ml-auto hidden sm:flex flex-row">
-        <div className="px-2 md:px-4 transform hover:scale-110 transition-transform duration-300 pt-2">
-          <Search className="text-gray-600 hover:text-blue-500" size={25} />
-        </div>
+        <div className="ml-auto hidden sm:flex flex-row">
+          <div className="px-2 md:px-4 transform hover:scale-110 transition-transform duration-300 pt-2">
+            <Search className="text-gray-600 hover:text-blue-500" size={25} />
+          </div>
 
-        <div className="px-2 md:px-4 transform hover:scale-110 transition-transform duration-300 pt-2">
-          <Heart className="text-red-500 hover:text-pink-500" size={25} />
-        </div>
+          <div className="px-2 md:px-4 transform hover:scale-110 transition-transform duration-300 pt-2">
+            <Heart className="text-red-500 hover:text-pink-500" size={25} />
+          </div>
 
-        <div className="px-2 md:px-4 transform hover:scale-110 transition-transform duration-300 pt-2">
-          <CopyPlus className="text-gray-600 hover:text-green-500" size={25} />
-        </div>
+          <div className="px-2 md:px-4 transform hover:scale-110 transition-transform duration-300 pt-2">
+            <CopyPlus
+              className="text-gray-600 hover:text-green-500"
+              size={25}
+            />
+          </div>
 
-        <div className="pl-2 pr-2 pt-2">
-          <ModeToggle />
-        </div>
+          <div className="pl-2 pr-2 pt-2">
+            <ModeToggle />
+          </div>
 
-        <div className="pl-2 pr-4 pt-2">
-          <UserButton afterSignOutUrl="/" />
+          <div className="pl-2 pr-4 pt-2">
+            <UserButton afterSignOutUrl="/" />
+          </div>
         </div>
       </div>
-    </div>
 
-    <div className="max-sm:block  ml-auto -mt-6 mr-2 w-fit hidden">
-      <UserMenu currentUser={user}/>
-    </div>
+      <div className="max-sm:mt-2 hidden max-sm:flex max-sm:flex-row max-sm:shadow-md">
+        <div className="ml-3 hover:scale-110 flex w-fit">
+          <Logo />
+          <h1 className="font-semibold mx-2 my-auto text-xl text-gray-800 dark:text-white mb-4 cursor-pointer transition-colors transform hover:glow ">
+            KIBITZIN
+          </h1>
+        </div>
 
+        <div className="ml-auto mr-2 w-fit">
+          <UserMenu currentUser={user} />
+        </div>
+      </div>
     </>
   );
 };

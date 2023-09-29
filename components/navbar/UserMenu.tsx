@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 
 import MenuItem from "./MenuItem";
 import { SafeUser } from "@/types";
-import Avatar from "./Avatar";
 import { CopyPlus, Heart, Menu, Search } from "lucide-react";
 import { UserButton } from "@clerk/nextjs";
 
@@ -33,9 +32,9 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
           border-[1px] 
           border-neutral-200 
           rounded-full 
-          hover:border-pink-300
+          dark:hover:border-pink-300
+          hover:bg-pink-100
           cursor-pointer
-          hover:bg-slate-950
           "
         >
           <Menu className="" />
