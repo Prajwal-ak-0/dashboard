@@ -1,8 +1,8 @@
 "use client";
 
 import React, { ReactNode } from 'react'
-import SideBarMenu from './sidebar/SideBarMenu'
-import SideBar from './sidebar/SideBar'
+import SideBarMenu from './SideBarMenu'
+import SideBar from './SideBar'
 import useSideBar from '@/hooks/useSideBar'
 import useSideMenu from '@/hooks/useSideMenu'
 import { cn } from '@/lib/utils';

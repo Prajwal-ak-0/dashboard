@@ -1,14 +1,24 @@
 "use client";
 
-import React from "react";
-import { ModeToggle } from "./ModeToggle";
+import React, { useEffect } from "react";
+import { ModeToggle } from "../ModeToggle";
 import { CopyPlus, Heart, Search } from "lucide-react";
 
 import Image from "next/image";
-import { UserButton } from "@clerk/nextjs";
+import { UserButton, currentUser } from "@clerk/nextjs";
+import { SafeUser } from "@/types";
+import UserMenu from "./UserMenu";
 
-const Navbar = () => {
+interface NavbarProps {
+  user:SafeUser | null;
+}
+
+const Navbar = ({
+  user
+}:NavbarProps )=> {
+  
   return (
+    <>
     <div className="md:my-6 my-4  md:mx-6 mx-2 flex flex-row">
       <div className="flex items-center space-x-2">
         
@@ -36,7 +46,7 @@ const Navbar = () => {
         </div>
       </div> */}
 
-      <div className="ml-auto flex flex-row">
+      <div className="ml-auto hidden sm:flex flex-row">
         <div className="px-2 md:px-4 transform hover:scale-110 transition-transform duration-300 pt-2">
           <Search className="text-gray-600 hover:text-blue-500" size={25} />
         </div>
@@ -58,6 +68,12 @@ const Navbar = () => {
         </div>
       </div>
     </div>
+
+    <div className="max-sm:block  ml-auto -mt-6 mr-2 w-fit hidden">
+      <UserMenu currentUser={user}/>
+    </div>
+
+    </>
   );
 };
 
