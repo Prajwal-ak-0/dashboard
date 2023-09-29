@@ -57,7 +57,7 @@ export const items = [
   },
   {
     id: "7",
-    name: "File-manager",
+    name: "File",
     url: "/file",
     icon: File,
   },

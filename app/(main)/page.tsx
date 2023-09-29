@@ -5,7 +5,7 @@ import Navbar from "@/components/navbar/Navbar";
 const SetupPage = async () => {
   const profile = await intialProfile();
 
-  return <Navbar user={profile}  />;
+  return <></>;
 }
  
 export default SetupPage;

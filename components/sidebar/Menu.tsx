@@ -6,6 +6,7 @@ import SideBar from './SideBar'
 import useSideBar from '@/hooks/useSideBar'
 import useSideMenu from '@/hooks/useSideMenu'
 import { cn } from '@/lib/utils';
+import BottomMenu from '../bottombar/BottomMenu';
 
 const Menu = ({children}:{children:ReactNode}) => {
     const sidebar=useSideBar();
@@ -21,6 +22,9 @@ const Menu = ({children}:{children:ReactNode}) => {
             <main className="md:pl-[172px] h-full">
               {children}
             </main>
+            <div>
+              <BottomMenu/>
+            </div>
           </div>
         </div>
       )
@@ -34,6 +38,9 @@ const Menu = ({children}:{children:ReactNode}) => {
         <main className="md:pl-[172px] h-full">
           {children}
         </main>
+        <div>
+          <BottomMenu/>
+        </div>
       </div>
     </div>
   )
