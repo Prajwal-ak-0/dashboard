@@ -17,12 +17,7 @@ interface NavbarProps {
 const Navbar = ({ user }: NavbarProps) => {
   return (
     <>
-      <div className="md:my-6 sm:my-4  md:mx-6 sm:mx-2 sm:flex sm:flex-row">
-        <div className="flex items-center space-x-2">
-          {/* <h1 className="text-2xl font-bold tracking-wide transition-colors dark:text-white dark:bg-slate-900 text-gray-800 bg-white hover:text-blue-800 cursor-pointer bg-opacity-60 hover:bg-opacity-100 rounded-lg p-2 hover:shadow-md font-sans hover:scale-105">
-          Dashboard
-        </h1> */}
-        </div>
+      <div className="md:my-6  sm:my-4  md:mx-6 sm:mx-2 sm:flex sm:flex-row">
 
         {/* Center search bar */}
         {/* <div className=" md:w-[500px]  md:block hidden md:ml-[550px] md:mr-4 ">

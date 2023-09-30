@@ -10,8 +10,7 @@ const MainLayout = async ({
   const user=await intialProfile();
     return ( 
       <>
-      <Menu/>
-      <Navbar user={user} />
+      
       <main className="md:pl-[172px] h-full">
         {children}
       </main>
