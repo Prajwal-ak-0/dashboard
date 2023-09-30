@@ -68,18 +68,20 @@ const ConversationPage = () => {
   const sidemenu = useSideMenu();
 
   return (
-    <div
-      className={`flex  rounded-md mr-4 h-full relative  ${
-        sidebar.isOpen ? "ml-[170px]" : "ml-[75px]"
-      } ${sidemenu.isOpen ? "ml-[70px]" : "ml-[170px]"} `}
+    <div className={` 
+            ${sidebar.isOpen ? "sm:ml-[170px] md:w-[78%] sm:w-[70%] " : "sm:ml-[70px] md:w-[90%] sm:w-[85%]"} 
+            ${sidemenu.isOpen ? "sm:ml-[70px] md:w-[90%] sm:w-[85%]" : "sm:ml-[170px] md:w-[78%] sm:w-[70%] "} 
+        `}
     >
-      {/* //History */}
-      <div className=""></div>
-
-      <div className="flex-1 ml-2">
-        {/* //Heading */}
-        <div className="border-2 border-neutral-200 fixed">
-          <div className="mt-4 ">
+      <div
+        className={`overflow-auto
+          flex flex-col border-2 border-neutral-200 fixed h-[70%]  rounded-md max-sm:w-full items-center justify-center shadow-md 
+          ${sidebar.isOpen ? " md:w-[78%] sm:w-[70%] " : "md:w-[90%] sm:w-[85%]"} 
+          ${sidemenu.isOpen ? " md:w-[90%] sm:w-[85%]" : "md:w-[78%] sm:w-[70%] "} 
+       `}
+      >
+        <div>
+          <div className=" ">
             <Heading
               title="Conversation"
               description="Our most advanced conversation model."
@@ -88,8 +90,8 @@ const ConversationPage = () => {
               bgColor="bg-violet-500/10"
             />
           </div>
-          {/* //Loader and conversation */}
-          <div className="px-4 border-2 border-neutral-200  w-full relative mr-8 lg:px-8">
+
+          <div className="px-2  w-full relative lg:px-8">
             <div className="space-y-4 mt-4">
               {isLoading && (
                 <div className="p-8 z-10 rounded-lg w-full flex items-center justify-center bg-muted">
@@ -119,10 +121,7 @@ const ConversationPage = () => {
           </div>
         </div>
 
-        {/* <Separator className="h-2 w-full text-black" /> */}
-
-        {/* //Form */}
-        <div className="fixed  mx-20 w-[60%] bottom-0">
+        <div className="fixed bottom-2  mx-20 w-[60%]">
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}

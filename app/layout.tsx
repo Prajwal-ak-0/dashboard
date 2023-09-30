@@ -21,7 +21,7 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const user=await intialProfile();
+    const user=await intialProfile();
   return (
     <ClerkProvider>
     <html lang="en" suppressHydrationWarning>

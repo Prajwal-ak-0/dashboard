@@ -20,7 +20,7 @@ export const Heading = ({
 }: HeadingProps) => {
   return (
     <>
-      <div className="px-4 lg:px-8 flex items-center gap-x-3 mb-8">
+      <div className="px-4 lg:px-8 flex gap-x-3">
         <div className={cn("p-2 w-fit rounded-md", bgColor)}>
         {React.createElement(icon, {
             size: 24,
