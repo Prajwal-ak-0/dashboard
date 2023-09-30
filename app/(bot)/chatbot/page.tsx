@@ -2,7 +2,7 @@
 
 import * as z from "zod";
 import axios from "axios";
-import { MessageSquare } from "lucide-react";
+import { MessageSquare, SendHorizonal } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
@@ -69,13 +69,13 @@ const ConversationPage = () => {
 
   return (
     <div className={` 
-            ${sidebar.isOpen ? "sm:ml-[170px] md:w-[78%] sm:w-[70%] " : "sm:ml-[70px] md:w-[90%] sm:w-[85%]"} 
+            ${sidebar.isOpen ? "sm:ml-[175px] md:w-[78%] sm:w-[70%] " : "sm:ml-[70px] md:w-[90%] sm:w-[85%]"} 
             ${sidemenu.isOpen ? "sm:ml-[70px] md:w-[90%] sm:w-[85%]" : "sm:ml-[170px] md:w-[78%] sm:w-[70%] "} 
         `}
     >
       <div
         className={`overflow-auto
-          flex flex-col border-2 border-neutral-200 fixed h-[70%]  rounded-md max-sm:w-full items-center justify-center shadow-md 
+          flex flex-col border-2 border-neutral-200 fixed sm:h-[70%] rounded-md max-sm:w-full items-center justify-center shadow-md 
           ${sidebar.isOpen ? " md:w-[78%] sm:w-[70%] " : "md:w-[90%] sm:w-[85%]"} 
           ${sidemenu.isOpen ? " md:w-[90%] sm:w-[85%]" : "md:w-[78%] sm:w-[70%] "} 
        `}
@@ -108,7 +108,7 @@ const ConversationPage = () => {
                     className={cn(
                       "p-8 w-full flex items-start gap-x-8 rounded-lg",
                       message.role === "user"
-                        ? "bg-white border border-black/10"
+                        ? "bg-white dark:text-black border border-black/10"
                         : "bg-muted"
                     )}
                   >
@@ -121,30 +121,26 @@ const ConversationPage = () => {
           </div>
         </div>
 
-        <div className="fixed bottom-2  mx-20 w-[60%]">
+        <div className={`fixed bottom-8  mx-20 w-[70%] ${sidebar.isOpen ? " md:w-[78%] sm:w-[70%] " : "md:w-[90%] sm:w-[85%]"} 
+          ${sidemenu.isOpen ? " md:w-[90%] sm:w-[85%]" : "md:w-[78%] sm:w-[70%] "} `}>
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
               className="
                   rounded-lg 
-                  border 
-                  w-full 
-                  p-4 
-                  px-3 
+                  w-full
                   md:px-6 
-                  focus-within:shadow-sm
-                  grid
-                  grid-cols-12
-                  gap-2
+                  flex 
                 "
             >
               <FormField
                 name="prompt"
                 render={({ field }) => (
-                  <FormItem className="col-span-12 lg:col-span-10">
-                    <FormControl className="m-0 p-0">
+                  <FormItem className="relative
+                   w-full">
+                    <FormControl className="">
                       <Input
-                        className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
+                        className="border-2 border-neutral-300 dark:bg-slate-800 focus:border-none h-16 text-md"
                         disabled={isLoading}
                         placeholder="How do I calculate the radius of a circle?"
                         {...field}
@@ -154,12 +150,12 @@ const ConversationPage = () => {
                 )}
               />
               <Button
-                className="col-span-12 lg:col-span-2 w-full"
+                className="hover:scale-110 ml-2 my-auto mr-2"
                 type="submit"
                 disabled={isLoading}
                 size="icon"
               >
-                Generate
+                <SendHorizonal className="dark:text-black" />
               </Button>
             </form>
           </Form>
