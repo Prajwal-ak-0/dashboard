@@ -1,12 +1,15 @@
 import { currentUser, redirectToSignIn } from "@clerk/nextjs"
 import { db } from "./db";
+import { Router } from "next/router";
 
 
 export const intialProfile=async () => {
     try {
         const user=await currentUser();
 
-        if(!user) return redirectToSignIn();
+        if(!user) {
+            return redirectToSignIn({returnBackUrl:"http://localhost:3000/sign-in"})
+        }
     
         const profile =await db.user.findUnique({
             where:{
