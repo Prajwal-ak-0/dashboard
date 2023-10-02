@@ -8,6 +8,7 @@ import { ToasterProvider } from '@/components/providers/ToastProvider'
 import Menu from '@/components/sidebar/Menu'
 import Navbar from '@/components/navbar/Navbar'
 import { intialProfile } from '@/lib/setInitialProfile'
+import AdminAuthentication from '@/components/admin/AdminAuthentication'
 
 const font = Open_Sans({ subsets: ['latin'] })
 
@@ -39,7 +40,7 @@ export default async function RootLayout({
         >
           <ToasterProvider/>
           <Menu/>
-          <Navbar user={user} />
+          <Navbar user={user}/>
           {children}
         </ThemeProvider>
       </body>

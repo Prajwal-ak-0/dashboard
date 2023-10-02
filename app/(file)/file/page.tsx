@@ -1,16 +1,15 @@
-"use client"
+"use client";
 
 import useSideBar from "@/hooks/useSideBar";
 import useSideMenu from "@/hooks/useSideMenu";
 import React from "react";
 
-const TodoPage = () => {
+const FilePage = () => {
   const sidebar = useSideBar();
   const sidemenu = useSideMenu();
   return (
-    <>
-      <div
-        className={` 
+    <div
+      className={` 
             ${
               sidebar.isOpen
                 ? "sm:ml-[175px] md:w-[78%] sm:w-[70%] "
@@ -22,9 +21,9 @@ const TodoPage = () => {
                 : "sm:ml-[170px] md:w-[78%] sm:w-[70%] "
             } 
         `}
-      >
-        <div
-          className={`overflow-auto mt-4
+    >
+      <div
+        className={`overflow-auto mt-4
           flex flex-col border-2 border-neutral-200 fixed sm:h-[80%] rounded-md max-sm:w-full items-center justify-center shadow-md 
           ${
             sidebar.isOpen ? " md:w-[78%] sm:w-[70%] " : "md:w-[90%] sm:w-[85%]"
@@ -35,12 +34,11 @@ const TodoPage = () => {
               : "md:w-[78%] sm:w-[70%] "
           } 
        `}
-        >
-          kjb k meenakshi prajwal preetham
-        </div>
+      >
+        kjb k meenakshi prajwal preetham 
       </div>
-    </>
+    </div>
   );
 };
 
-export default TodoPage;
+export default FilePage;

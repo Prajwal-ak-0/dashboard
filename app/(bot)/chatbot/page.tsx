@@ -4,7 +4,7 @@ import * as z from "zod";
 import axios from "axios";
 import { MessageSquare, SendHorizonal } from "lucide-react";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import OpenAI, { ChatCompletionRequestMessage } from "openai";
@@ -25,6 +25,7 @@ import History from "../components/History";
 import useSideBar from "@/hooks/useSideBar";
 import useSideMenu from "@/hooks/useSideMenu";
 import { Separator } from "@/components/ui/separator";
+import { db } from "@/lib/db";
 
 const ConversationPage = () => {
   const router = useRouter();

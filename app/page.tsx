@@ -2,7 +2,9 @@
 
 const SetupPage = async () => {
 
-  return <></>;
+  return (
+    <></>
+  );
 }
  
 export default SetupPage;
