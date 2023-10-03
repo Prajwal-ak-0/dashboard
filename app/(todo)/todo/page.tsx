@@ -1,12 +1,26 @@
-"use client"
+"use client";
 
+import { Heading } from "@/components/Heading";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { useModal } from "@/hooks/useModalStore";
 import useSideBar from "@/hooks/useSideBar";
 import useSideMenu from "@/hooks/useSideMenu";
+import { CheckSquare, Plus, Search } from "lucide-react";
 import React from "react";
 
 const TodoPage = () => {
   const sidebar = useSideBar();
   const sidemenu = useSideMenu();
+  const modal = useModal();
+
+  const getCurrentDate = () => {
+    const currentDate = new Date();
+    return currentDate.toDateString();
+  };
+
+  
+
   return (
     <>
       <div
@@ -36,7 +50,32 @@ const TodoPage = () => {
           } 
        `}
         >
-          kjb k meenakshi prajwal preetham
+          <div className="flex pt-2  mb-auto">
+            <div className="max-md:-ml-10   ">
+              <Heading
+                icon={CheckSquare}
+                title="Manage your tasks"
+                description={getCurrentDate()}
+              />
+            </div>
+            <div className="flex px-2 md:px-4 cursor-pointer transform hover:scale-110 transition-transform duration-300 my-auto">
+              <Input
+                className="max-sm:hidden mr-1"
+                type="email"
+                placeholder="Searc"
+              />
+              <Search
+                className="my-auto text-gray-600 hover:text-blue-500"
+                size={25}
+              />
+            </div>
+            <div className="my-auto max-md:-mr-4">
+              <Button onClick={modal.onOpen} className="" size={"btn"} variant={"btn"}>
+                <Plus className="rounded-full bg-neutral-100" size={18} />
+                Task
+              </Button>
+            </div>
+          </div>
         </div>
       </div>
     </>

@@ -25,13 +25,13 @@ export const Heading = ({
         {React.createElement(icon, {
             size: 24,
             className: cn(
-              "w-10 h-10",iconColor
+              "md:w-10 md:h-10 h-8 w-8",iconColor
             ),
           })
           }
         </div>
         <div>
-          <h2 className="text-3xl font-bold">{title}</h2>
+          <h2 className="md:text-3xl sm:text-xl text-lg  font-bold">{title}</h2>
           <p className="text-sm text-muted-foreground">
             {description}
           </p>

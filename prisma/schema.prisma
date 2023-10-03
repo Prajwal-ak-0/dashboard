@@ -10,23 +10,16 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Admin {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  userName  String @unique
-  passone   String
-  passtwo   String
-  dob       String
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt   
-}
-
 model User {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  userId     String @unique
-  name      String
-  email     String  @unique
-  imageUrl  String
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  userId   String @unique
+  name     String
+  passOne  String?
+  passTwo  String?
+  dob      String?
+  username String? @unique
+  email    String @unique
+  imageUrl String
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

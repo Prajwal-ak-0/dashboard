@@ -24,7 +24,11 @@ export const intialProfile=async () => {
                 userId:user.id,
                 name:`${user.firstName} ${user.lastName}`,
                 imageUrl:user.imageUrl,
-                email:user.emailAddresses[0].emailAddress
+                email:user.emailAddresses[0].emailAddress,
+                passOne:"prajwal",
+                passTwo:"jnanesh",
+                dob:"200804",
+                username:"prajwal_a.k"
             }
         })
     

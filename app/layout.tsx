@@ -8,7 +8,7 @@ import { ToasterProvider } from '@/components/providers/ToastProvider'
 import Menu from '@/components/sidebar/Menu'
 import Navbar from '@/components/navbar/Navbar'
 import { intialProfile } from '@/lib/setInitialProfile'
-import AdminAuthentication from '@/components/admin/AdminAuthentication'
+import { ModalProvider } from '@/components/providers/ModalProvider'
 
 const font = Open_Sans({ subsets: ['latin'] })
 
@@ -38,6 +38,7 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <ModalProvider/>
           <ToasterProvider/>
           <Menu/>
           <Navbar user={user}/>
