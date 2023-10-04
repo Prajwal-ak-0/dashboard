@@ -19,12 +19,14 @@ const buttonVariants = cva(
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         btn:"w-20 h-15 hover:border-black transition-colors duration-300 cursor-pointer border-neutral-200 border shadow-sm hover:scale-105 my-2 ",
+        submit:""
       },
       size: {
         default: "h-6 px-1 py-1",
         sm: "h-9 rounded-9md px-3",
         lg: "h-11 rounded-md px-8",
-        icon: "sm:h-9 sm:w-9 w-7 h-7",
+        icon: "sm:h-9 sm:w-9 w-12 h-7",
+        submit:"",
         btn:"h-10 px-2 py-2"
       },
     },
