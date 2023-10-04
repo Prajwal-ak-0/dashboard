@@ -41,6 +41,7 @@ const LoginModal = () => {
     console.log(res);
     if (res && res.error) {
       toast.error(res.error);
+      LoginModal.onClose();
       
       router.refresh();
     } else if (res?.status === 200) {
