@@ -7,6 +7,7 @@ import MenuItem from "./MenuItem";
 import { SafeUser } from "@/types";
 import { CopyPlus, Heart, Menu, Search } from "lucide-react";
 import { UserButton } from "@clerk/nextjs";
+import { signOut } from "next-auth/react";
 
 interface UserMenuProps {
   currentUser?: SafeUser | null;
@@ -73,8 +74,8 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
               icon={CopyPlus}
             />
             <div className="flex hover:bg-pink-100 hover:scale-105 ">
-              <div className=" pb-1 px-2 py-2 ">
-                <UserButton/>
+              <div className=" pb-1 px-2 py-2 " >
+                <UserButton />
               </div>
               <h1 className="transition font-semibold px-4 py-3">Manage </h1>
             </div>

@@ -9,6 +9,7 @@ import { UserButton, currentUser } from "@clerk/nextjs";
 import { SafeUser } from "@/types";
 import UserMenu from "./UserMenu";
 import Logo from "./Logo";
+import { signIn, signOut } from "next-auth/react";
 
 interface NavbarProps {
   user: SafeUser | null;
@@ -58,7 +59,7 @@ const Navbar = ({ user }: NavbarProps) => {
             <ModeToggle />
           </div>
 
-          <div className="pl-2 pr-4 pt-2">
+          <div className="pl-2 pr-4 pt-2" onClick={()=>{signOut()}}>
             <UserButton afterSignOutUrl="/" />
           </div>
         </div>
