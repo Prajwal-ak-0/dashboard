@@ -1,9 +1,22 @@
-import React from 'react'
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import Auth from "@/components/Auth";
+import { getServerSession } from "next-auth";
+import React from "react";
 
-const ChatLayout = () => {
+const layout = async ({ children }: { children: React.ReactNode }) => {
+  const session = await getServerSession(authOptions);
+
   return (
-    <div>ChatLayout</div>
-  )
-}
+    <div>
+      {session ? (
+        <>{children}</>
+      ) : (
+        <>
+          <Auth />
+        </>
+      )}
+    </div>
+  );
+};
 
-export default ChatLayout
+export default layout;

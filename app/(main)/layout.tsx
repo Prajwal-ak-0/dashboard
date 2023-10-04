@@ -10,6 +10,7 @@ const MainLayout = async ({
       <main className="md:pl-[172px] h-full">
         {children}
       </main>
+      
       </>
      );
     }

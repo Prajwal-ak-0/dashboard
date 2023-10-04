@@ -5,6 +5,7 @@ import { ActionTooltip } from "../ActionToolTip";
 import { cn } from "@/lib/utils";
 import React from "react";
 import { useRouter } from "next/navigation";
+import { Separator } from "../ui/separator";
 
 interface SideBarItemProps {
   name: string;
@@ -42,6 +43,8 @@ const SideBarItem = ({ name, icon, id, url }: SideBarItemProps) => {
     {name}
   </h1>
 </div>
+
+      
 
     </ActionTooltip>
   );

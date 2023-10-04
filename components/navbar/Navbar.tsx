@@ -59,7 +59,7 @@ const Navbar = ({ user }: NavbarProps) => {
             <ModeToggle />
           </div>
 
-          <div className="pl-2 pr-4 pt-2" onClick={()=>{signOut()}}>
+          <div className="pl-2 pr-4 pt-2">
             <UserButton afterSignOutUrl="/" />
           </div>
         </div>

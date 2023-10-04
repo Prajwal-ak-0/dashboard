@@ -16,18 +16,7 @@ const page =  async() => {
 
   return (
     <>
-        {
-          session ? (
-            <>
-              <Navbar user={user} />
-              <Menu />
-            </>
-          ) : (
-            <>
-              <Auth/>
-            </>
-          )
-        }
+        
     </>
   )
 };

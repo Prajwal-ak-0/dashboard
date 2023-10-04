@@ -1,6 +1,5 @@
 import { currentUser, redirectToSignIn } from "@clerk/nextjs"
 import { db } from "./db";
-import { Router } from "next/router";
 
 
 export const intialProfile=async () => {
@@ -17,7 +16,15 @@ export const intialProfile=async () => {
             }
         })
     
-        if(profile) return profile;
+        if(profile) {
+            return {
+                id:profile.id,
+                userId:profile.userId,
+                name:profile.name,
+                imageUrl:profile.imageUrl,
+                email:profile.email,
+            }
+        };
     
         const newProfile=await db.user.create({
             data:{
@@ -25,14 +32,16 @@ export const intialProfile=async () => {
                 name:`${user.firstName} ${user.lastName}`,
                 imageUrl:user.imageUrl,
                 email:user.emailAddresses[0].emailAddress,
-                passOne:"prajwal",
-                passTwo:"jnanesh",
-                dob:"200804",
-                username:"prajwal_a.k"
             }
         })
     
-        return newProfile;
+        return {
+            id:newProfile.id,
+            userId:newProfile.userId,
+            name:newProfile.name,
+            imageUrl:newProfile.imageUrl,
+            email:newProfile.email,
+        };
     } catch (error) {
         console.error("Erro in initialProfile",error)
         throw error;

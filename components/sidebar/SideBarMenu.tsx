@@ -5,7 +5,7 @@ import React, { useCallback } from 'react'
 import SideBarItem from './SideBarItem'
 import { Separator } from '../ui/separator'
 import { ScrollArea } from '../ui/scroll-area'
-import { Bot, CalendarDays, ChevronRight, File, LayoutGrid, ListTodo, Mail, MessageSquare, Settings } from 'lucide-react'
+import { Bot, CalendarDays, ChevronRight, File, LayoutGrid, ListTodo, LogOut, Mail, MessageSquare, Settings } from 'lucide-react'
 import useSideMenu from '@/hooks/useSideMenu'
 import useSideBar from '@/hooks/useSideBar';
 

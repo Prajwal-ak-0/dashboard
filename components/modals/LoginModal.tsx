@@ -107,17 +107,6 @@ const LoginModal = () => {
                         gap-2
                     "
         >
-          <div>First time using airbnb?</div>
-          <div
-            onClick={handleSubmit(onSubmit)}
-            className="
-                            hover:underline
-                            text-neutral-800
-                            cursor-pointer
-                        "
-          >
-            Create an account
-          </div>
         </div>
       </div>
     </div>

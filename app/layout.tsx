@@ -44,7 +44,18 @@ export default async function RootLayout({
               <ModalProvider />
               <ToasterProvider />
               <LoginModal />
-              {children}
+              {session ? (
+                <>
+                  <Navbar user={user} />
+                  <Menu />
+                  {children}
+                </>
+              ) : (
+                <>
+                  <Auth />
+                </>
+              )}
+              
             </ThemeProvider>
           </SessionProvider>
         </body>

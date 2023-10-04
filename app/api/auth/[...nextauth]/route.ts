@@ -87,13 +87,29 @@ export const authOptions = {
           throw new Error("Password not found");
         }
 
-        if(userFound.passOne===credentials.passone && userFound.passTwo===credentials.passtwo){
-          console.log("Password match",userFound);
-          return userFound;
+        const One = await bcrypt.compare(
+          credentials.passone,
+          userFound.passOne
+        );
+        const Two = await bcrypt.compare(
+          credentials.passtwo,
+          userFound.passTwo
+        );
+
+        if (One == false || Two == false) {
+          console.log("Password does not match");
+          throw new Error("Password does not match");
         }
 
-        console.log("Password does not match");
-        throw new Error("Password does not match");
+        console.log("Password match", userFound);
+        return {
+          id: userFound.id,
+          userId:userFound.userId,
+          name: userFound.name,
+          username: userFound.username,
+          email: userFound.email,
+          imageUrl: userFound.imageUrl,
+        };
       },
     }),
   ],

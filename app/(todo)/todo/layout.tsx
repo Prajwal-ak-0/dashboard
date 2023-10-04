@@ -1,15 +1,22 @@
-import React from 'react'
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import Auth from "@/components/Auth";
+import { getServerSession } from "next-auth";
+import React from "react";
 
-const layout = ({
-  children,
-}: {
-  children: React.ReactNode
-}) => {
+const layout = async ({ children }: { children: React.ReactNode }) => {
+  const session = await getServerSession(authOptions);
+
   return (
     <div>
-      {children}
+      {session ? (
+        <>{children}</>
+      ) : (
+        <>
+          <Auth />
+        </>
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default layout
+export default layout;
