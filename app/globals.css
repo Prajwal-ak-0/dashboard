@@ -69,6 +69,25 @@
   }
 }
  
+@keyframes loadingDots {
+  0%, 20% {
+    content: ".";
+  }
+  40%, 60% {
+    content: "..";
+  }
+  80% {
+    content: "...";
+  }
+}
+
+.animate-loading-dots::after {
+  display: inline-block;
+  content: "";
+  animation: loadingDots 1s infinite;
+}
+
+
 @layer base {
   * {
     @apply border-border;

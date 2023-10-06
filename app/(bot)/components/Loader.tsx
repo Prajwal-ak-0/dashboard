@@ -1,17 +1,14 @@
-import Image from "next/image"
+import Image from "next/image";
 
 export const Loader = () => {
   return (
-    <div className=" flex flex-col gap-y-4 items-center justify-center">
-      <div className="w-10 h-10 relative animate-spin">
-        <Image
-          alt="Logo"
-          src="/logo.png"
-          fill
-        />
+    <div className=" flex  flex-col items-center justify-center">
+      <div className="w-16 h-16  animate-spin">
+        <Image alt="Logo" src="/logo.png" fill />
       </div>
-      <p className="text-sm text-muted-foreground">
-        Genius is thinking...
+      <p className="text-lg mt-4 text-muted-foreground">
+        Genius is thinking
+        <span className="animate-loading-dots"> </span>
       </p>
     </div>
   );

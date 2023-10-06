@@ -2,7 +2,7 @@
 
 import * as z from "zod";
 import axios from "axios";
-import { MessageSquare, Mic2, Send, SendHorizonal } from "lucide-react";
+import { MessageSquare, Mic2, Pause, Send, SendHorizonal } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
@@ -39,6 +39,10 @@ const ConversationPage = () => {
   const sidemenu = useSideMenu();
 
   const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([]);
+  const [voiceAssistantLoading, setVoiceAssistantLoading] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [userInput, setUserInput] = useState("");
+  const [transcriptMessage, setTranscriptMessage] = useState("");
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -88,22 +92,12 @@ const ConversationPage = () => {
         .map((result: any) => result[0].transcript)
         .join("");
 
+      setTranscriptMessage(transcript); // Update transcriptMessage
       setTranscript(transcript);
     };
 
     recognition.onend = async () => {
       if (transcript !== "") {
-        const userMessage: ChatCompletionRequestMessage = {
-          role: "assistant",
-          content: transcript,
-        };
-        const newMessages = [...messages, userMessage];
-
-        const response = await axios.post("/api/conversation", {
-          messages: newMessages,
-        });
-        setMessages((current) => [...current, userMessage, response.data]);
-        console.log(response.data);
       }
     };
 
@@ -163,9 +157,9 @@ const ConversationPage = () => {
                   name="prompt"
                   render={({ field }) => (
                     <FormItem className="md:col-span-11 col-span-9">
-                      <FormControl className="m-0 px-2">
+                      <FormControl className="m-0 px-1">
                         <Input
-                          className="border-0 outline-none max-md:w-full  focus-visible:ring-0 focus-visible:ring-transparent"
+                          className="max-md:w-full  "
                           disabled={isLoading}
                           placeholder="How do I calculate the radius of a circle?"
                           {...field}
@@ -174,12 +168,36 @@ const ConversationPage = () => {
                     </FormItem>
                   )}
                 />
-                <div className="flex mx-2 gap-2">
-                  <Button className="w-fit bg-transparent" type="submit" size="submit">
-                    <Mic2 className="w-fit bg-transparent" />
-                  </Button>
+
+                <div className="flex mr-2 gap-2">
+                  {!isListening && (
+                    <>
+                      <Button
+                        size="submit"
+                        variant="submit"
+                        disabled={isListening}
+                        onClick={startRecognition}
+                        className="p-2 h-10 my-2 bg-transparent hover:bg-transparent border  hover:ring-1 hover:shadow-md hover:scale-105 transition-all duration-100 rounded-full"
+                      >
+                        <Mic2 className="w-fit bg-transparent" />
+                      </Button>
+                    </>
+                  )}
+                  {isListening && (
+                    <>
+                      <Button
+                        size="submit"
+                        variant="submit"
+                        disabled={!isListening}
+                        onClick={stopRecognition}
+                        className="p-2 h-10 my-2 bg-transparent hover:bg-transparent border  hover:ring-1 hover:shadow-md hover:scale-105 rounded-full transition-all duration-100"
+                      >
+                        <Pause className="w-fit p-2 bg-transparent" />
+                      </Button>
+                    </>
+                  )}
                   <Button
-                    className="border hover:ring-1 hover:shadow-md hover:scale-105 transition-all duration-100"
+                    className="border md:mr-1 px-2  hover:ring-1 hover:shadow-md my-2 hover:scale-105 transition-all duration-100"
                     type="submit"
                     disabled={isLoading}
                     size="submit"
@@ -193,6 +211,11 @@ const ConversationPage = () => {
           </div>
           <div className="space-y-4 mt-4">
             {isLoading && (
+              <div className="px-8 py-4 rounded-lg  w-full flex items-center justify-center ">
+                <Loader />
+              </div>
+            )}
+            {voiceAssistantLoading && (
               <div className="p-8 rounded-lg w-full flex items-center justify-center bg-muted">
                 <Loader />
               </div>
@@ -224,3 +247,16 @@ const ConversationPage = () => {
 };
 
 export default ConversationPage;
+
+{
+  /* <div>
+      <button onClick={startRecognition} disabled={isListening}>
+        Start
+      </button>
+      <button onClick={stopRecognition} disabled={!isListening}>
+        Stop
+      </button>
+      <p>Transcript: {transcript}</p>
+      <p>Response: {response}</p>
+    </div> */
+}

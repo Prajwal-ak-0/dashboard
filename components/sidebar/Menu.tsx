@@ -27,7 +27,7 @@ const Menu = () => {
           <div className="md:flex z-30 max-sm:hidden h-full w-fit flex-col fixed inset-y-0">
             <SideBar />
           </div>
-          <div className="bottom-0 p-2 rounded-md bg-red-100  hover:shadow-md hover:scale-110 hover:bg-rose-400 cursor-pointer border-black left-0 fixed z-50 mb-4 ml-2">
+          <div className="bottom-0 p-2 rounded-md bg-red-100  dark:text-black hover:shadow-md hover:scale-110 hover:bg-rose-400 cursor-pointer border-black left-0 fixed z-50 mb-4 ml-2">
             <div onClick={logout} className="flex gap-2">
               <LogOut />
               Sign Out
@@ -46,7 +46,7 @@ const Menu = () => {
         <div className=" md:flex z-30 max-sm:hidden h-full w-fit flex-col fixed inset-y-0 ">
           <SideBarMenu />
         </div>
-        <div className="bottom-0 p-2 rounded-md bg-red-100  hover:shadow-md hover:scale-110 hover:bg-rose-400 cursor-pointer border-black left-0 fixed z-50 mb-4 ml-2">
+        <div className="bottom-0 p-2 rounded-md dark:text-black bg-red-100  hover:shadow-md hover:scale-110 hover:bg-rose-400 cursor-pointer border-black left-0 fixed z-50 mb-4 ml-2">
           <div onClick={logout} className="flex gap-2">
             <LogOut />
           </div>
