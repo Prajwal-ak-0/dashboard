@@ -6,19 +6,32 @@ import { Input } from "@/components/ui/input";
 import { useModal } from "@/hooks/useModalStore";
 import useSideBar from "@/hooks/useSideBar";
 import useSideMenu from "@/hooks/useSideMenu";
+import { Todo } from "@prisma/client";
+import axios from "axios";
 import { CheckSquare, Plus, Search } from "lucide-react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const TodoPage = () => {
   const sidebar = useSideBar();
   const sidemenu = useSideMenu();
   const modal = useModal();
+  const [items, setItems] =useState([] as Todo[]);
 
   const getCurrentDate = () => {
     const currentDate = new Date();
     return currentDate.toDateString();
   };
 
+  const getItem=async ()=>{
+    const response = await axios.get('/api/todo');
+    const data = await response.data;
+    console.log(data);
+    setItems(data);
+  }
+
+  useEffect(()=>{
+    getItem();
+  },[])
   
 
   return (
@@ -75,6 +88,33 @@ const TodoPage = () => {
                 Task
               </Button>
             </div>
+          </div>
+          <div>
+            {items &&
+              items.map((item:any)=>{
+                return(
+                  <div key={item.id} className="flex flex-col border-b-2 border-neutral-200 py-2 px-2">
+                    <div className="flex justify-between">
+                      <div className="flex">
+                        <div className="flex items-center">
+                          <input type="checkbox" className="form-checkbox" />
+                        </div>
+                        <div className="flex flex-col ml-2">
+                          <p className="text-sm font-semibold">{item.title}</p>
+                          <p className="text-xs text-gray-500">{item.description}</p>
+                        </div>
+                      </div>
+                      <div className="flex">
+                        <div className="flex items-center">
+                          <p className="text-xs text-gray-500">{item.date}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )
+              }
+              )
+            }
           </div>
         </div>
       </div>

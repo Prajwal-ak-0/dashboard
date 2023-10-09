@@ -35,3 +35,18 @@ export async function POST(request: Request,req:NextApiRequest) {
   }
 }
 
+export async function GET(request: Request, req: NextApiRequest) {
+  try {
+
+
+    const todo = await db.todo.findMany();
+
+    return NextResponse.json(todo);
+  } catch (error) {
+    console.log(error);
+    return new NextResponse("Something went wrong in [TODO_POST]", {
+      status: 500,
+    });
+    
+  }
+}
