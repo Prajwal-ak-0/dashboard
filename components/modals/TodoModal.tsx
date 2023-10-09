@@ -1,11 +1,9 @@
 "use client";
 
-import queryString from "query-string";
 import axios from "axios";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { todo } from "@prisma/client";
 
 import {
   Dialog,
@@ -60,7 +58,7 @@ export const TodoModal = () => {
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
-      const response = await axios.post("/api/todo", data);
+      const response = await axios.post("/api/todo", {title:data.title,description:data.description,importance:data.importance,userId:userId});
       if (response.status === 200) {
         toast.success("Task added successfully");
         console.log(response.data);

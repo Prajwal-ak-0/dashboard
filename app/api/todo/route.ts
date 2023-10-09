@@ -1,39 +1,37 @@
 import { NextResponse } from "next/server";
 import { db } from "@/lib/db";
-import { getAuth } from "@clerk/nextjs/server";
 import { NextApiRequest } from "next";
-import { currentUser, redirectToSignIn } from "@clerk/nextjs";
 
 export async function POST(request: Request,req:NextApiRequest) {
   try {
-
-    const {userId}=await getAuth(req);
-
-    if(!userId){
-      return redirectToSignIn({returnBackUrl:"http://localhost:3000/sign-in"})
-    }
       
     const body=await request.json();
 
-    const { title, description, importance} = body;
+    const { title, description,userId} = body;
 
-    if(!title || !description || !importance ){
-      return new NextResponse("Missing fields", { status: 400 });
+    if(!userId){
+        return new NextResponse("Unauthorized!", { status: 500 });
     }
-    
-    const todo=await db.todo.create({
-      data:{
-        title,
-        description,
-        important:importance,
-        userID:userId,
-        completed:false,
-      }
-    })
 
-    return NextResponse.json(todo);
-  } catch (error: any) {
-    console.log();
-    return new NextResponse("Internal Error", { status: 500 });
+    if(!title || !description){
+        return new NextResponse("Title or description is missing!", { status: 500 });
+    }
+
+    try {
+        const calendar = await db.todo.create({
+            data:{
+                title,
+                description,
+                userId:userId,
+            }
+        })
+    
+        return NextResponse.json(calendar);
+    } catch (error) {
+        return new NextResponse("Something went wrong in [TODO_POST]", { status: 500 });
+    }
+  } catch (error) {
+    console.log(error);
   }
 }
+

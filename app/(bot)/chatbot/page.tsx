@@ -40,9 +40,7 @@ const ConversationPage = () => {
 
   const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([]);
   const [voiceAssistantLoading, setVoiceAssistantLoading] = useState(false);
-  const [isEditing, setIsEditing] = useState(false);
   const [userInput, setUserInput] = useState("");
-  const [transcriptMessage, setTranscriptMessage] = useState("");
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -92,7 +90,6 @@ const ConversationPage = () => {
         .map((result: any) => result[0].transcript)
         .join("");
 
-      setTranscriptMessage(transcript); // Update transcriptMessage
       setTranscript(transcript);
     };
 
@@ -144,7 +141,7 @@ const ConversationPage = () => {
                 rounded-lg 
                 border 
                 w-full
-                p-4 
+                pt-2
                 px-3 
                 md:px-6 
                 focus-within:shadow-sm
@@ -163,6 +160,7 @@ const ConversationPage = () => {
                           disabled={isLoading}
                           placeholder="How do I calculate the radius of a circle?"
                           {...field}
+                          value={transcript}
                         />
                       </FormControl>
                     </FormItem>
@@ -197,7 +195,7 @@ const ConversationPage = () => {
                     </>
                   )}
                   <Button
-                    className="border md:mr-1 px-2  hover:ring-1 hover:shadow-md my-2 hover:scale-105 transition-all duration-100"
+                    className="border md:mr-1 px-1 hover:ring-1 hover:shadow-md my-2 hover:scale-105 transition-all duration-100"
                     type="submit"
                     disabled={isLoading}
                     size="submit"
@@ -212,11 +210,6 @@ const ConversationPage = () => {
           <div className="space-y-4 mt-4">
             {isLoading && (
               <div className="px-8 py-4 rounded-lg  w-full flex items-center justify-center ">
-                <Loader />
-              </div>
-            )}
-            {voiceAssistantLoading && (
-              <div className="p-8 rounded-lg w-full flex items-center justify-center bg-muted">
                 <Loader />
               </div>
             )}

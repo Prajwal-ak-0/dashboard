@@ -55,7 +55,7 @@ const Navbar = ({ user }: NavbarProps) => {
             />
           </div>
 
-          <div className="pl-2 pr-2 pt-2">
+          <div className="pl-2 pr-2 pt-1">
             <ModeToggle />
           </div>
 
