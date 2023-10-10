@@ -41,8 +41,6 @@ export async function POST(request: Request, req: NextApiRequest) {
 
 export async function GET(request: Request, req: NextApiRequest) {
   try {
-
-
     const calendar = await db.calendarEvent.findMany();
 
     return NextResponse.json(calendar);
@@ -51,6 +49,5 @@ export async function GET(request: Request, req: NextApiRequest) {
     return new NextResponse("Something went wrong in [CALENDAR_POST]", {
       status: 500,
     });
-    
   }
 }

@@ -15,24 +15,23 @@ const TodoPage = () => {
   const sidebar = useSideBar();
   const sidemenu = useSideMenu();
   const modal = useModal();
-  const [items, setItems] =useState([] as Todo[]);
+  const [items, setItems] = useState([] as Todo[]);
 
   const getCurrentDate = () => {
     const currentDate = new Date();
     return currentDate.toDateString();
   };
 
-  const getItem=async ()=>{
-    const response = await axios.get('/api/todo');
+  const getItem = async () => {
+    const response = await axios.get("/api/todo");
     const data = await response.data;
     console.log(data);
     setItems(data);
-  }
+  };
 
-  useEffect(()=>{
+  useEffect(() => {
     getItem();
-  },[])
-  
+  }, []);
 
   return (
     <>
@@ -83,7 +82,12 @@ const TodoPage = () => {
               />
             </div>
             <div className="my-auto max-md:-mr-4">
-              <Button onClick={modal.onOpen} className="" size={"btn"} variant={"btn"}>
+              <Button
+                onClick={modal.onOpen}
+                className=""
+                size={"btn"}
+                variant={"btn"}
+              >
                 <Plus className="rounded-full bg-neutral-100" size={18} />
                 Task
               </Button>
@@ -91,9 +95,12 @@ const TodoPage = () => {
           </div>
           <div>
             {items &&
-              items.map((item:any)=>{
-                return(
-                  <div key={item.id} className="flex flex-col border-b-2 border-neutral-200 py-2 px-2">
+              items.map((item: any) => {
+                return (
+                  <div
+                    key={item.id}
+                    className="flex flex-col border-b-2 border-neutral-200 py-2 px-2"
+                  >
                     <div className="flex justify-between">
                       <div className="flex">
                         <div className="flex items-center">
@@ -101,7 +108,9 @@ const TodoPage = () => {
                         </div>
                         <div className="flex flex-col ml-2">
                           <p className="text-sm font-semibold">{item.title}</p>
-                          <p className="text-xs text-gray-500">{item.description}</p>
+                          <p className="text-xs text-gray-500">
+                            {item.description}
+                          </p>
                         </div>
                       </div>
                       <div className="flex">
@@ -111,10 +120,8 @@ const TodoPage = () => {
                       </div>
                     </div>
                   </div>
-                )
-              }
-              )
-            }
+                );
+              })}
           </div>
         </div>
       </div>
